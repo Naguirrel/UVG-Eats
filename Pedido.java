@@ -1,17 +1,17 @@
 public class Pedido {
     private int id_Pedido; 
     private String restaurante;
-    private String cliente; 
+    private int id_cliente; 
     private String producto; 
     private int monto; 
     private String estado; 
     private String tiempo; 
     private String detalle; 
 
-    public Pedido(int id_Pedido, String restaurante, String cliente, String producto, int monto, String estado, String tiempo, String detalle) {
+    public Pedido(int id_Pedido, String restaurante, int id_cliente, String producto, int monto, String estado, String tiempo, String detalle) {
         this.id_Pedido = id_Pedido;
         this.restaurante = restaurante;
-        this.cliente = cliente;
+        this.id_cliente = id_cliente;
         this.producto = producto;
         this.monto = monto;
         this.estado = estado;
@@ -35,12 +35,12 @@ public class Pedido {
         this.restaurante = restaurante;
     }
 
-    public String getCliente() {
-        return cliente;
+    public int getCliente() {
+        return id_cliente;
     }
     
-    public void setCliente(String cliente) {
-        this.cliente = cliente;
+    public void setCliente(int id_cliente) {
+        this.id_cliente = id_cliente;
     }
     
     public String getProducto() {
