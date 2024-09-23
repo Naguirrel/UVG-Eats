@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PrototipoParte1 {
+public class PrototipoPrimerFondo {
 
     public static void main(String[] args) {
         
@@ -21,6 +21,25 @@ public class PrototipoParte1 {
             }
         };
 
-        panelConFondo.setLayout(null);
+        panelConFondo.setLayout(null);  
+
+//SEGUNDO COMMIT AQUI CREA EL BOTON DE BARISTA SIUUUUU        
+        ImageIcon baristaIcon = new ImageIcon("C:/Documentos/Pat/uvg/2do Semestre/POO/prototipo restaurantes/Barista.jpeg");
+        JButton btnBarista = new JButton(baristaIcon);
+        btnBarista.setBounds(50, 100, 150, 150);  
+        
+        panelConFondo.add(btnBarista);
+
+        
+        btnBarista.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mostrarMenuBarista();  
+            }
+        });
+
+        
+        frame.add(panelConFondo);
+        frame.setVisible(true);
     }
 }
