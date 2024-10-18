@@ -23,3 +23,22 @@ public class EnviarCorreo {
                 return new PasswordAuthentication(remitente, clave);
             }
         });
+
+        try {
+            // Creación del mensaje
+            Message mensaje = new MimeMessage(sesion);
+            mensaje.setFrom(new InternetAddress(remitente));
+            mensaje.setRecipients(Message.RecipientType.TO, InternetAddress.parse(destinatario));
+            mensaje.setSubject(asunto);
+            mensaje.setText(cuerpo);
+
+            // Envío del mensaje
+            Transport.send(mensaje);
+
+            System.out.println("Correo enviado exitosamente a " + destinatario);
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
+}
