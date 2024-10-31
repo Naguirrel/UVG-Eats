@@ -88,3 +88,42 @@ public class vistaInicioSesionreal {
         createAccountBtn.setBackground(Color.WHITE);
         createAccountBtn.addActionListener(e -> redireccionarCrearCuenta(frame));
         frame.getContentPane().add(createAccountBtn);
+        // Botón para iniciar sesión
+        JButton loginBtn_1 = new JButton("Iniciar Sesión");
+        loginBtn_1.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 15));
+        loginBtn_1.setBounds(109, 450, 121, 47);
+        loginBtn_1.setBackground(Color.WHITE);
+        loginBtn_1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Validaciones para el inicio de sesión
+                String email = txtCorreoElectronico.getText().trim();
+                String password = new String(passwordField.getPassword()).trim();
+                
+                if (email.isEmpty() || password.isEmpty()) {
+                    mostrarError("Debe de ingresar un correo y su contraseña respectiva.");
+                    return;
+                } else if (!email.contains("@")) {
+                    mostrarError("Debe de ingresar una dirección de correo válida");
+                    return;
+                } else {
+                    Usuario usuarioActual = buscarUsuarioPorCorreo(email);
+                    if (usuarioActual != null && usuarioActual.getContraseña().equals(password)) {
+                        redireccionarDashboard(frame, usuarioActual);
+                    } else {
+                        mostrarError("Las credenciales ingresadas no son correctas, vuelva a intentar.");
+                    }
+                }
+            }
+        });
+        frame.getContentPane().add(loginBtn_1);
+    }
+
+    private Usuario buscarUsuarioPorCorreo(String correo) {
+        for (Usuario usuario : listaUsuarios) {
+            if (usuario.getCorreo().equalsIgnoreCase(correo)) {
+                return usuario;
+            }
+        }
+        return null;
+    }
