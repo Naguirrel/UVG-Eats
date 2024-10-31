@@ -127,3 +127,37 @@ public class vistaInicioSesionreal {
         }
         return null;
     }
+    public void drawMainButtons(JFrame frame, Usuario usuarioActual) {
+        frame.getContentPane().removeAll();
+        frame.repaint();
+        JLabel cerrarSesionLbl = new JLabel("Cerrar Sesión");
+        cerrarSesionLbl.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 14));
+        cerrarSesionLbl.setForeground(Color.DARK_GRAY);
+        cerrarSesionLbl.setBounds(254, 11, 80, 14);
+        cerrarSesionLbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                mostrarFormulario(frame);
+            }
+            @Override public void mouseEntered(java.awt.event.MouseEvent e) { cerrarSesionLbl.setForeground(Color.LIGHT_GRAY); }
+            @Override public void mouseExited(java.awt.event.MouseEvent e) { cerrarSesionLbl.setForeground(Color.DARK_GRAY); }
+        });
+        frame.getContentPane().add(cerrarSesionLbl);
+    }
+
+    public void mostrarError(String mensaje) {
+        JOptionPane.showMessageDialog(null, mensaje, "Ha ocurrido un error.", JOptionPane.ERROR_MESSAGE);
+    }
+
+    public void mostrarExito(String mensaje){
+        JOptionPane.showMessageDialog(null, mensaje, "Éxito", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void redireccionarCrearCuenta(JFrame frame) {
+        // Lógica para mostrar el formulario de creación de cuenta
+    }
+
+    public void redireccionarDashboard(JFrame frame, Usuario usuarioActual) {
+        drawMainButtons(frame, usuarioActual);
+    }
+}
