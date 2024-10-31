@@ -50,3 +50,41 @@ public class vistaInicioSesionreal {
         logoImageLabel.setIcon(new ImageIcon(logoImage));
         logoImageLabel.setBounds(100, 150, 125, 100);
         frame.getContentPane().add(logoImageLabel);
+         // Campo de contraseña
+        JPasswordField passwordField = new JPasswordField();
+        passwordField.setBounds(32, 379, 280, 30);
+        passwordField.setToolTipText("Contraseña");
+        passwordField.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 16));
+        passwordField.setBackground(Color.WHITE);
+        frame.add(passwordField);
+        
+        // Etiquetas y campo de texto para el correo electrónico
+        JLabel welcomeLbl = new JLabel("¡Bienvenid@ a UVG-EATS!");
+        welcomeLbl.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 19));
+        welcomeLbl.setBounds(68, 100, 240, 50);
+        frame.getContentPane().add(welcomeLbl);
+        
+        JTextField txtCorreoElectronico = new JTextField();
+        txtCorreoElectronico.setToolTipText("Correo Electrónico");
+        txtCorreoElectronico.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 16)); // Asegurarse que sea texto plano
+        txtCorreoElectronico.setBackground(Color.WHITE);
+        txtCorreoElectronico.setBounds(32, 330, 285, 30);
+        frame.getContentPane().add(txtCorreoElectronico);
+        
+        JLabel lblCorreoElectronico = new JLabel("Correo electrónico:");
+        lblCorreoElectronico.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 13));
+        lblCorreoElectronico.setBounds(115, 300, 110, 36);
+        frame.getContentPane().add(lblCorreoElectronico);
+        
+        JLabel lblContraseña = new JLabel("Contraseña:");
+        lblContraseña.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 13));
+        lblContraseña.setBounds(137, 350, 70, 36);
+        frame.getContentPane().add(lblContraseña);
+        
+        // Botón para crear cuenta
+        JButton createAccountBtn = new JButton("Crear Cuenta");
+        createAccountBtn.setFont(new Font("Yu Gothic UI Light", Font.PLAIN, 14));
+        createAccountBtn.setBounds(109, 513, 121, 30);
+        createAccountBtn.setBackground(Color.WHITE);
+        createAccountBtn.addActionListener(e -> redireccionarCrearCuenta(frame));
+        frame.getContentPane().add(createAccountBtn);
