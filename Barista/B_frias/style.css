@@ -1,0 +1,394 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap");
+
+/*! General */
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background: #1e1e1e;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #6e6e6e;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/*! Nav */
+.main-nav {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  padding: var(--spacing-l);
+  background-color: black;
+  color: black;
+}
+
+.nav-title {
+  font-size: 3rem; /* Título grande */
+  font-weight: bold;
+  margin-bottom: var(--spacing-s);
+  color: whitesmoke;
+  font-family:'Courier New', Courier, monospace;
+}
+
+.nav-description {
+  font-size: 1.2rem; /* Descripción más pequeña */
+  color: white;
+}
+
+/*! Carrusel */
+.swiper {
+  max-width: 50%;
+  overflow: visible;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+}
+
+.swiper-slide::after {
+  position: absolute;
+  content: "";
+  inset: 0;
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background: linear-gradient(to bottom right, #b8b8b88f, #0000005e);
+}
+
+.swiper-slide-active::after {
+  background: none;
+}
+
+.swiper-slide>div {
+  text-align: center;
+  display: none;
+  opacity: 0;
+}
+
+.swiper-slide-active div {
+  display: block;
+  opacity: 1;
+}
+
+.swiper-slide h2 {
+  font-size: 1.2rem;
+  font-family: "Libre Baskerville", serif;
+  position: relative;
+}
+
+.swiper-slide h2::after {
+  position: absolute;
+  content: "";
+  bottom: -20px;
+  left: 50%;
+}
+
+@keyframes line {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+.swiper-slide-active h2::after {
+  animation: line 0.5s linear forwards;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  box-shadow: 0px 3px 17px rgb(0 0 0 / 25%);
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+}
+
+@media (min-width: 768px) {
+  .swiper-slide h2 {
+    font-size: 2rem;
+  }
+}
+
+/*! Menu lateral */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.slmenu {
+  font-family: Ubuntu;
+  display: grid;
+  place-items: center;
+}
+
+button {
+  border: 0;
+  outline: none;
+  background: none;
+}
+
+.menu-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 40px;
+  height: 40px;
+  background-image: url("./Logo_1.jpg");
+  background-size: cover;
+  cursor: pointer;
+  z-index: 3;
+}
+
+body.open .menu-btn {
+  width: 40px;
+  height: 40px;
+  background-image: url("./equis.jpg");
+}
+
+.menu {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  opacity: 0; /* El menú empieza invisible */
+  transform: translateY(-100%); /* El menú empieza fuera de pantalla */
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Transición para la animación */
+}
+
+body.open .menu {
+  opacity: 1; /* Se vuelve visible */
+  transform: translateY(0); /* Vuelve a su posición normal */
+}
+
+.menu nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  visibility: hidden;
+}
+
+body.open .menu nav {
+  visibility: visible;
+}
+
+.menu nav a {
+  text-decoration: none;
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  opacity: 1;
+  transition: 0.25s;
+}
+
+body.open .menu a {
+  animation: show 0.3s backwards;
+}
+
+.menu nav:hover a:not(:hover) {
+  opacity: 0.5;
+}
+
+.backdrop {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  height: 100vh;
+  aspect-ratio: 1 / 1;
+  translate: -50% -50%;
+  scale: 0;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 50%;
+  z-index: 1;
+  pointer-events: none; /* No bloquea la interacción con las cards */
+  transition: all 0.6s; /* Añadir transición para la animación del fondo */
+}
+
+body.open .backdrop {
+  opacity: 1;
+  scale: 5;
+  pointer-events: all; /* Bloquea cuando el menú está activo */
+}
+
+/*! Footer */
+.footer-basic {
+  padding:40px 0;
+  background-color:black;
+  color:white;
+}
+
+.footer-basic ul {
+  padding:0;
+  list-style:none;
+  text-align:center;
+  font-size:18px;
+  line-height:1.6;
+  margin-bottom:0;
+}
+
+.footer-basic li {
+  padding:0 10px;
+}
+
+.footer-basic ul a {
+  color:inherit;
+  text-decoration:none;
+  opacity:0.8;
+}
+
+.footer-basic ul a:hover {
+  opacity:1;
+}
+
+.footer-basic .social {
+  text-align:center;
+  padding-bottom:25px;
+}
+
+.footer-basic .social > a {
+  font-size:24px;
+  width:40px;
+  height:40px;
+  line-height:40px;
+  display:inline-block;
+  text-align:center;
+  border-radius:50%;
+  border:1px solid #ccc;
+  margin:0 8px;
+  color:inherit;
+  opacity:0.75;
+}
+
+.footer-basic .social > a:hover {
+  opacity:0.9;
+}
+
+.footer-basic .copyright {
+  margin-top:15px;
+  text-align:center;
+  font-size:13px;
+  color:#aaa;
+  margin-bottom:0;
+}
+
+/*! Social Media Icons */
+
+.wrapper {
+  display: flex; /* Cambiado a flex para mejor control de alineación */
+  justify-content: center; /* Alinea horizontalmente los íconos al centro */
+  align-items: center; /* Alinea verticalmente los íconos al centro */
+  list-style: none;
+  margin: 0 auto; /* Centra la wrapper en caso de que sea un elemento bloque */
+  padding: 20px; /* Espaciado adicional para separarlo del resto del contenido */
+}
+
+.wrapper .icon {
+  position: relative;
+  background: black;
+  border-radius: 50%;
+  padding: 15px;
+  margin: 10px;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 10px 10px rgba(92, 219, 149, 0.1);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .tooltip {
+  position: absolute;
+  top: 0;
+  font-size: 14px;
+  background: #ffffff;
+  color: #ffffff;
+  padding: 5px 8px;
+  border-radius: 5px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .tooltip::before {
+  position: absolute;
+  content: "";
+  height: 8px;
+  width: 8px;
+  background: #ffffff;
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .icon:hover .tooltip {
+  top: -45px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.wrapper .icon:hover span,
+.wrapper .icon:hover .tooltip {
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper .facebook:hover,
+.wrapper .facebook:hover .tooltip,
+.wrapper .facebook:hover .tooltip::before {
+  background: #1877F2;
+  color: #000000;
+}
+
+.wrapper .twitter:hover,
+.wrapper .twitter:hover .tooltip,
+.wrapper .twitter:hover .tooltip::before {
+  background: #1DA1F2;
+  color: #000000;
+}
+
+.wrapper .instagram:hover,
+.wrapper .instagram:hover .tooltip,
+.wrapper .instagram:hover .tooltip::before {
+  background: #d300e0;
+  color: #000000;
+}
+
+.wrapper .github:hover,
+.wrapper .github:hover .tooltip,
+.wrapper .github:hover .tooltip::before {
+  background: #9e9a9a;
+  color: #000000;
+}
+
+.wrapper .youtube:hover,
+.wrapper .youtube:hover .tooltip,
+.wrapper .youtube:hover .tooltip::before {
+  background: #ff3030;
+  color: #000000;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+</head>
+<body>
+    <h1>Bienvenido a tu perfil</h1>
+    <div id="user-info"></div>
+
+    <script>
+        function mostrarDatosUsuario() {
+            const email = localStorage.getItem("userEmail");
+            const csvContent = localStorage.getItem("usuariosCSV");
+            if (!csvContent) {
+                document.getElementById("user-info").innerText = "No se encontraron datos del usuario.";
+                return;
+            }
+
+            const lines = csvContent.split("\n");
+            const usuario = lines.find(line => line.includes(email));
+            if (usuario) {
+                const [nombre, usuarioEmail, usuarioPassword, pedidosEnCurso, pedidosCompletados] = usuario.split(",");
+                document.getElementById("user-info").innerHTML = `
+                    <p><strong>Nombre:</strong> ${nombre}</p>
+                    <p><strong>Email:</strong> ${usuarioEmail}</p>
+                    <p><strong>Pedidos en Curso:</strong> ${pedidosEnCurso}</p>
+                    <p><strong>Pedidos Completados:</strong> ${pedidosCompletados}</p>
+                `;
+            }
+        }
+
+        mostrarDatosUsuario();
+    </script>
+</body>
+</html>
