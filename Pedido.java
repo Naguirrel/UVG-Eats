@@ -13,6 +13,7 @@ public class Pedido {
     private Timer timer;
     private Pedidos pedidos; // Instancia de la clase Pedidos
 
+
     public Pedido(int id_Pedido, String restaurante, int id_cliente, String producto, int monto, String estado, int tiempo, String detalle, Pedidos pedidos) {
         this.id_Pedido = id_Pedido;
         this.restaurante = restaurante;

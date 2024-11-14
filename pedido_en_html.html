@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Pedido</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #e0f7e0; /* Fondo verde claro */
+        }
+        .pedido-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 50%;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #4caf50;
+        }
+        .pedido-detail {
+            margin-bottom: 15px;
+        }
+        .pedido-detail label {
+            font-weight: bold;
+            color: #333;
+        }
+        .pedido-detail span {
+            margin-left: 10px;
+            color: #555;
+        }
+        .btn-volver {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .btn-volver:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="pedido-container">
+        <h1>Detalle del Pedido</h1>
+
+        <!-- Información del Pedido -->
+        <div class="pedido-detail">
+            <label for="idPedido">ID Pedido:</label>
+            <span id="idPedido"></span>
+        </div>
+        <div class="pedido-detail">
+            <label for="restaurante">Restaurante:</label>
+            <span id="restaurante"></span>
+        </div>
+        <div class="pedido-detail">
+            <label for="producto">Producto:</label>
+            <span id="producto"></span>
+        </div>
+        <div class="pedido-detail">
+            <label for="monto">Monto:</label>
+            <span id="monto"></span>
+        </div>
+        <div class="pedido-detail">
+            <label for="estado">Estado:</label>
+            <span id="estado"></span>
+        </div>
+        <div class="pedido-detail">
+            <label for="tiempoRestante">Tiempo Restante:</label>
+            <span id="tiempoRestante"></span>
+        </div>
+        <div class="pedido-detail">
+            <label for="detalle">Detalles:</label>
+            <span id="detalle"></span>
+        </div>
+
+        <a href="index.html" class="btn-volver">Volver</a>
+    </div>
+
+    <script>
+        // Suponemos que los detalles del pedido vienen de un endpoint (como una API REST)
+        // Puedes utilizar un fetch si necesitas obtener estos datos desde el backend.
+        
+        const pedidoId = 123; // Este es un ejemplo. Debes obtener el ID del pedido dinámicamente
+        fetch(`/api/pedido/${pedidoId}`) // Suponemos que tienes un endpoint para obtener un pedido por ID
+            .then(response => response.json())
+            .then(data => {
+                // Rellenamos los detalles en el HTML con los datos recibidos
+                document.getElementById('idPedido').textContent = data.id_Pedido;
+                document.getElementById('restaurante').textContent = data.restaurante;
+                document.getElementById('producto').textContent = data.producto;
+                document.getElementById('monto').textContent = data.monto;
+                document.getElementById('estado').textContent = data.estado;
+                document.getElementById('tiempoRestante').textContent = data.tiempoRestante;
+                document.getElementById('detalle').textContent = data.detalle;
+            })
+            .catch(error => {
+                console.error('Error al obtener los detalles del pedido:', error);
+            });
+    </script>
+</body>
+</html>
