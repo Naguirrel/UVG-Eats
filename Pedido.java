@@ -12,6 +12,7 @@ public class Pedido {
     private String detalle; 
     private Timer timer;
     private Pedidos pedidos; // Instancia de la clase Pedidos
+    private Runnable onUpdate; // Callback para actualizar tiempo en la interfaz
 
 
     public Pedido(int id_Pedido, String restaurante, int id_cliente, String producto, int monto, String estado, int tiempo, String detalle, Pedidos pedidos) {
@@ -25,6 +26,10 @@ public class Pedido {
         this.detalle = detalle;
         this.timer = new Timer(); 
         this.pedidos = pedidos;
+    }
+
+    public void setOnUpdate(Runnable onUpdate) {
+        this.onUpdate = onUpdate;
     }
 
     public int getId_Pedido() {
@@ -98,28 +103,24 @@ public class Pedido {
 
     // Iniciar el temporizador y agregar el pedido a la lista correspondiente
     public void iniciarTemporizador() {
-        // Agregar el pedido a la lista correspondiente en Pedidos
-        pedidos.agregarPedido(this);
-
-        // Calcular tiempo estimado de entrega en función de la carga del restaurante
-        int pedidosPendientes = obtenerCantidadPedidosEnRestaurante(restaurante);
-        this.tiempo = 180 + (pedidosPendientes * 120); // 3 minutos base + 2 minutos por cada pedido pendiente
-
-        TimerTask task = new TimerTask() {
+        timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 if (tiempo > 0) {
                     tiempo--;
                 } else {
-                    estado = "Su pedido está listo para la entrega";
+                    estado = "Su pedido está listo para la entrega"; // Cambiar estado
+                    if (onUpdate != null) {
+                        onUpdate.run(); // Actualizar interfaz
+                    }
                     timer.cancel();
-                    // Eliminar el pedido cuando el tiempo llegue a 0
-                    pedidos.eliminarPedidoPorId(id_Pedido);
+                    return; // Salir del método cuando el tiempo llega a cero
+                }
+                if (onUpdate != null) {
+                    onUpdate.run(); // Actualizar interfaz en cada tick
                 }
             }
-        };
-        //Actualización de timer por segundo
-        timer.scheduleAtFixedRate(task, 0, 1000);
+        }, 0, 1000); // Actualizar cada segundo
     }
 
     //obtener la cantidad de pedidos en la lista del restaurante especificado
@@ -152,12 +153,4 @@ public class Pedido {
         return String.format("%02d:%02d", minutos, segundos);
     }
 
-    public String generarResumen() {
-        return "Pedido #" + id_Pedido + " del restaurante " + restaurante + "\n" +
-               "Producto: " + producto + "\n" +
-               "Monto: " + monto + "\n" +
-               "Estado actual: " + estado + "\n" +
-               "Tiempo restante: " + getTiempoFormateado() + "\n" +
-               "Detalles: " + detalle;
-    }
 }
