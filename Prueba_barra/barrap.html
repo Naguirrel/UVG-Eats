@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barra de Progreso</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="icon" href="../1. CSS/Logo_2.jpg">
+    <script src="https://kit.fontawesome.com/2b9cdc1c9a.js" crossorigin="anonymous"></script>
+    <title>UVG-Eats</title>
+</head>
+<body>
+    <nav class="main-nav">
+        <h1 class="nav-title">UVG-Eats</h1>
+        <p class="nav-description">Explora las mejores opciones de comida en nuestro campus</p>
+    </nav>
+<br>
+<br><br><br><br><br><br><br>
+    <div class="steps">
+        <div class="step" id="step1">ENVIANDO PEDIDO...</div>
+        <div class="step" id="step2">PEDIDO RECIBIDO</div>
+        <div class="step" id="step3">PREPARANDO PEDIDO</div>
+        <div class="step" id="step4">PEDIDO LISTO!</div>
+    </div>
+    
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <script src="script.js"></script>
+<button class="menu-btn"></button>
+<div class="backdrop"></div>
+    <div class="menu">
+        <nav>
+          <a href="#" class="link1" style="animation-delay: 0.2s;">Inicio</a>
+          <a href="#" class="link1" style="animation-delay: 0.3s;">Cuenta</a>
+          <a href="#" class="link1" style="animation-delay: 0.4s;">Pedidos</a>
+          <a href="#footer-basic" class="link1" style="animation-delay: 0.5s;">Contacto</a>
+          <a href="./login.html" class="link1" style="animation-delay: 0.6s;">Salir</a>
+        </nav>
+    </div>
+<script src="./back.js"></script>
+<br><br><br><br><br><br><br><br>
+<div class="footer-basic" id="foter">
+    <footer>
+        <section>
+            <ul class="wrapper">
+                <a href="https://www.facebook.com/norman.aguirre.359">
+                    <li class="icon facebook">
+                      <span class="tooltip">Facebook</span>
+                      <span><i class="fab fa-facebook-f"></i></span>
+                    </li>
+                    </a>
+                    <a href="https://x.com/naguirrel07/status/1846619396812558372">
+                    <li class="icon twitter">
+                      <span class="tooltip">Twitter</span>
+                      <span><i class="fab fa-twitter"></i></span>
+                    </li>
+                    </a>
+                    <a href="https://www.instagram.com/naguirre_29/profilecard/?igsh=bjV2M2lsZ3Qwa2Y2">
+                    <li class="icon instagram">
+                      <span class="tooltip">Instagram</span>
+                      <span><i class="fab fa-instagram"></i></span>
+                    </li>
+                    </a>
+                    <a href="https://github.com/Naguirrel/UVG-Eats">
+                    <li class="icon github">
+                      <span class="tooltip">Github</span>
+                      <span><i class="fab fa-github"></i></span>
+                    </li>
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=snbjAS4zt4E">
+                    <li class="icon youtube">
+                      <span class="tooltip">Youtube</span>
+                      <span><i class="fab fa-youtube"></i></span>
+                    </li>
+                    </a>
+              </ul>
+        </section>
+        <section>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Inicio</a></li>
+                <li class="list-inline-item"><a href="./perfil.html">Cuenta</a></li>
+                <li class="list-inline-item"><a href="#">Pedidos</a></li>
+                <li class="list-inline-item"><a href="./login.html">Salir</a></li>
+            </ul>
+        </section>
+      <p class="copyright">UVG-Eats © 2024</p>
+    </footer>
+</body>
+</html>
