@@ -31,7 +31,6 @@ body {
   font-weight: bold;
   margin-bottom: var(--spacing-s);
   color: whitesmoke;
-  font-family:'Courier New', Courier, monospace;
 }
 
 .nav-description {

@@ -5,20 +5,20 @@
   text-align: center;
   margin-bottom: var(--spacing-xl);
   padding: var(--spacing-l);
-  background-color: white;
-  color: white;
+  background-color: black;
+  color: black;
 }
 
 .nav-title {
   font-size: 3rem; /* Título grande */
   font-weight: bold;
   margin-bottom: var(--spacing-s);
-  color: black;
+  color: whitesmoke;
 }
 
 .nav-description {
   font-size: 1.2rem; /* Descripción más pequeña */
-  color: black;
+  color: white;
 }
 
 /*! Barra */
@@ -73,6 +73,43 @@ body {
     50% { filter: brightness(1.2); }
     100% { filter: brightness(0.9); }
   }
+
+/*! Datos del pedido */
+.pedido-container {
+  background-color: #d4f4d7; /* Fondo verde claro */
+  border: 2px solid #a3d8a5; /* Borde verde más oscuro */
+  border-radius: 10px; /* Bordes redondeados */
+  padding: 20px; /* Espaciado interno */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
+  max-width: 500px; /* Tamaño máximo para el contenedor */
+  margin: 20px auto; /* Centrado horizontal */
+  text-align: center; /* Centrar texto */
+}
+
+.pedido-container h1 {
+  font-size: 1.8rem; /* Título destacado */
+  color: #2a472a; /* Texto verde oscuro */
+  margin-bottom: 15px;
+}
+
+.pedido-detail {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  margin-bottom: 10px; /* Espaciado entre filas */
+  font-size: 1rem;
+  gap: 10px; /* Espaciado entre label y span */
+}
+
+.pedido-detail label {
+  font-weight: bold;
+  color: #2a472a; /* Color verde oscuro */
+}
+
+.pedido-detail span {
+  color: #4b4b4b; /* Color gris oscuro */
+}
+
 
 /*! Menu lateral */
 * {
@@ -184,8 +221,8 @@ body {
   /*! Footer */
   .footer-basic {
     padding:40px 0;
-    background-color:#ffffff;
-    color:#4b4c4d;
+    background-color:black;
+    color:white;
   }
   
   .footer-basic ul {
@@ -255,7 +292,7 @@ body {
   
   .wrapper .icon {
     position: relative;
-    background: #ffffff;
+    background: black;
     border-radius: 50%;
     padding: 15px;
     margin: 10px;
