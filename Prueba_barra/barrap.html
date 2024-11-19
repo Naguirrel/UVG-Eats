@@ -33,11 +33,11 @@
 
       <div class="pedido-detail">
           <label for="idPedido">ID Pedido:</label>
-          <span id="idPedido">DefaultID</span>
+          <span id="idPedido">654321</span>
       </div>
       <div class="pedido-detail">
           <label for="restaurante">Restaurante:</label>
-          <span id="restaurante">DefaultRestaurante</span>
+          <span id="restaurante">Café Barista</span>
       </div>
       <div class="pedido-detail">
           <label for="producto">Producto:</label>
@@ -67,10 +67,8 @@
     <div class="menu">
         <nav>
           <a href="#" class="link1" style="animation-delay: 0.2s;">Inicio</a>
-          <a href="#" class="link1" style="animation-delay: 0.3s;">Cuenta</a>
-          <a href="#" class="link1" style="animation-delay: 0.4s;">Pedidos</a>
+          <a href="../Usuarios/perfil_usuario.html" class="link1" style="animation-delay: 0.3s;">Cuenta</a>
           <a href="#footer-basic" class="link1" style="animation-delay: 0.5s;">Contacto</a>
-          <a href="./login.html" class="link1" style="animation-delay: 0.6s;">Salir</a>
         </nav>
     </div>
 <script src="./back.js"></script>
@@ -127,13 +125,13 @@
       function obtenerParametrosURL() {
           const params = new URLSearchParams(window.location.search);
           return {
-              idPedido: params.get('idPedido') || 'DefaultID',
-              restaurante: params.get('restaurante') || 'DefaultRestaurante',
-              producto: params.get('producto') || 'DefaultProducto',
-              monto: params.get('monto') || '0.00',
+              idPedido: params.get('idPedido') || '654321',
+              restaurante: params.get('restaurante') || 'Café Barista',
+              producto: params.get('producto') || 'Café Latte (1), Café Americano (1)',
+              monto: params.get('monto') || '41.00',
               estado: params.get('estado') || 'En preparación',
               tiempo: parseInt(params.get('tiempo')) || 0,
-              detalle: params.get('detalle') || 'DefaultDetalles'
+              detalle: params.get('detalle') || 'Café Latte: Leche Descremada'
           };
       }
 

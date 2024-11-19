@@ -1,3 +1,26 @@
+/*! Nav */
+.main-nav {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  padding: var(--spacing-l);
+  background-color: black;
+  color: black;
+}
+
+.nav-title {
+  font-size: 3rem; /* Título grande */
+  font-weight: bold;
+  margin-bottom: var(--spacing-s);
+  color: whitesmoke;
+  font-family:'Courier New', Courier, monospace;
+}
+
+.nav-description {
+  font-size: 1.2rem; /* Descripción más pequeña */
+  color: white;
+}
+
+/*! Hola */
 body {
     background-color: #e0f5c1;
     font-family: Arial, sans-serif;

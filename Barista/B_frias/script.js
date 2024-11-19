@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (drinkInfo) {
         drinkTitle.textContent = drinkName;
         drinkDescription.textContent = drinkInfo.description;
-        drinkPrice.textContent = `$${drinkInfo.price.toFixed(2)}`;
+        drinkPrice.textContent = `Q${drinkInfo.price.toFixed(2)}`;
         quantityInput.value = 0;
 
         modal.style.display = "flex";
@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const subtotal = drinkInfo.price * quantity;
 
       const listItem = document.createElement("li");
-      listItem.textContent = `${selectedDrink} (${quantity}) $${subtotal.toFixed(2)}`;
+      listItem.textContent = `${selectedDrink} (${quantity}) Q${subtotal.toFixed(2)}`;
       orderList.appendChild(listItem);
 
       totalSubtotal += subtotal; // Actualiza el subtotal acumulado
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Actualiza el subtotal mostrado
   function updateSubtotal() {
-    subtotalText.textContent = `Subtotal: Q${totalSubtotal.toFixed(2)}`;
+    subtotalText.textContent = `Total: Q${totalSubtotal.toFixed(2)}`;
   }
 
   // Limpiar el pedido

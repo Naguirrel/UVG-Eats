@@ -17,54 +17,59 @@
     <h1 class="nav-title">UVG-Eats</h1>
     <p class="nav-description">Elige tus productos</p>
   </nav>
-  
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
   <div class="swiper mySwiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <img src="./Café Americano.png" />
-        <div>
-          <h2>Café Americano</h2>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <img src="./Capuccino.png" />
-        <div>
-          <h2>Capuccino</h2>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <img src="./Latte.png" />
-        <div>
-          <h2>Café Latte</h2>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <img src="./Matcha.png" />
-        <div>
-          <h2>Matcha</h2>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <img src="./Te chai.png" />
-        <div>
-          <h2>Té Chai</h2>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <img src="./Te negro.png" />
-        <div>
-          <h2>Té Negro</h2>
-        </div>
-      </div>
+    <div class="swiper-slide" data-name="Café Americano">
+      <img src="./CaféAmericano.png" alt="Café Americano" />
+      <div><h2>Café Americano</h2></div>
+    </div>
+    <div class="swiper-slide" data-name="Capuccino">
+      <img src="./Capuccino.png" alt="Capuccino" />
+      <div><h2>Capuccino</h2></div>
+    </div>
+    <div class="swiper-slide" data-name="Café Latte">
+      <img src="./CafeLatte.png" alt="Café Latte" />
+      <div><h2>Café Latte</h2></div>
+    </div>
+    <!-- Agrega más slides si es necesario -->
+  </div>
+
+  <h3 style="text-align: center;">Pedido Actual:</h3>
+  <div class="order-list-container">
+    <ul id="orderList" class="order-list"></ul>
+  </div>
+
+  <!-- Subtotal y Botones de Cancelar y Enviar -->
+  <div id="orderSummary" style="text-align: center; margin-top: 10px;">
+    <p id="subtotalText">Subtotal: $0.00</p>
+    <div>
+      <button id="clearOrder">Cancelar Pedido</button>
+      <button id="submitOrder">Enviar Pedido</button>
     </div>
   </div>
+
+  <!-- Modal -->
+  <div id="drinkModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="drinkTitle">Título de la Bebida</h2>
+      <p id="drinkDescription">Descripción de la bebida aquí.</p>
+      <p>Precio: <span id="drinkPrice">$0.00</span></p>
+      <div>
+        <label for="quantity">Cantidad:</label>
+        <button id="decrease">-</button>
+        <input type="number" id="quantity" value="0" readonly />
+        <button id="increase">+</button>
+      </div>
+      <button id="addToOrder">Agregar al Pedido</button>
+    </div>
+  </div>
+
   <script src='https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js'></script>
-  <script src="script.js"></script>
 
 <button class="menu-btn"></button>
-<br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br>
+<br>
 <div class="backdrop"></div>
     <div class="menu">
         <nav>
@@ -123,5 +128,6 @@
         </section>
       <p class="copyright">UVG-Eats © 2024</p>
     </footer>
+<script src="script.js"></script>
 </body>
 </html>
