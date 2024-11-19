@@ -15,7 +15,7 @@
         <p class="nav-description">Explora las mejores opciones de comida en nuestro campus</p>
     </nav>
 <br>
-<br><br><br><br><br><br><br>
+<br><br>
     <div class="steps">
         <div class="step" id="step1">ENVIANDO PEDIDO...</div>
         <div class="step" id="step2">PEDIDO RECIBIDO</div>
@@ -26,6 +26,41 @@
     <div class="progress-container">
         <div class="progress-bar" id="progressBar"></div>
     </div>
+<br><br><br>
+    <!-- Detalle del Pedido Integrado -->
+    <div class="pedido-container">
+      <h1>Detalle del Pedido</h1>
+
+      <div class="pedido-detail">
+          <label for="idPedido">ID Pedido:</label>
+          <span id="idPedido">DefaultID</span>
+      </div>
+      <div class="pedido-detail">
+          <label for="restaurante">Restaurante:</label>
+          <span id="restaurante">DefaultRestaurante</span>
+      </div>
+      <div class="pedido-detail">
+          <label for="producto">Producto:</label>
+          <span id="producto">DefaultProducto</span>
+      </div>
+      <div class="pedido-detail">
+          <label for="monto">Monto:</label>
+          <span id="monto">Q0.00</span>
+      </div>
+      <div class="pedido-detail">
+          <label for="estado">Estado:</label>
+          <span id="estado">En preparación</span>
+      </div>
+      <div class="pedido-detail">
+          <label for="tiempoRestante">Tiempo Restante:</label>
+          <span id="tiempoRestante">00:00</span>
+      </div>
+      <div class="pedido-detail">
+          <label for="detalle">Detalles:</label>
+          <span id="detalle">DefaultDetalles</span>
+      </div>
+  </div>
+  
     <script src="script.js"></script>
 <button class="menu-btn"></button>
 <div class="backdrop"></div>
@@ -39,7 +74,7 @@
         </nav>
     </div>
 <script src="./back.js"></script>
-<br><br><br><br><br><br><br><br>
+<br><br>
 <div class="footer-basic" id="foter">
     <footer>
         <section>
@@ -86,5 +121,54 @@
         </section>
       <p class="copyright">UVG-Eats © 2024</p>
     </footer>
+
+    <script>
+      // Obtener parámetros de la URL o usar valores por defecto
+      function obtenerParametrosURL() {
+          const params = new URLSearchParams(window.location.search);
+          return {
+              idPedido: params.get('idPedido') || 'DefaultID',
+              restaurante: params.get('restaurante') || 'DefaultRestaurante',
+              producto: params.get('producto') || 'DefaultProducto',
+              monto: params.get('monto') || '0.00',
+              estado: params.get('estado') || 'En preparación',
+              tiempo: parseInt(params.get('tiempo')) || 0,
+              detalle: params.get('detalle') || 'DefaultDetalles'
+          };
+      }
+
+      function actualizarInterfaz(datos) {
+          document.getElementById('idPedido').textContent = datos.idPedido;
+          document.getElementById('restaurante').textContent = datos.restaurante;
+          document.getElementById('producto').textContent = datos.producto;
+          document.getElementById('monto').textContent = `Q${parseFloat(datos.monto).toFixed(2)}`;
+          document.getElementById('estado').textContent = datos.estado;
+          document.getElementById('tiempoRestante').textContent = formatearTiempo(datos.tiempo);
+          document.getElementById('detalle').textContent = datos.detalle;
+      }
+
+      function formatearTiempo(segundos) {
+          const minutos = Math.floor(segundos / 60);
+          const segs = segundos % 60;
+          return `${String(minutos).padStart(2, '0')}:${String(segs).padStart(2, '0')}`;
+      }
+
+      function iniciarTemporizador(datos) {
+          const interval = setInterval(() => {
+              if (datos.tiempo > 0) {
+                  datos.tiempo--;
+                  actualizarInterfaz(datos);
+              } else {
+                  datos.estado = "Su pedido está listo para la entrega";
+                  actualizarInterfaz(datos);
+                  clearInterval(interval);
+              }
+          }, 1000);
+      }
+
+      const datosPedido = obtenerParametrosURL();
+      actualizarInterfaz(datosPedido);
+      iniciarTemporizador(datosPedido);
+  </script>
 </body>
 </html>

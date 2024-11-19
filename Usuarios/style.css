@@ -1,0 +1,50 @@
+body {
+    background-color: #e0f5c1;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.perfil-container {
+    background-color: #4CAF50;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 60%;
+}
+
+.perfil-container img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.perfil-container h2, .perfil-container p {
+    color: white;
+    margin: 10px 0;
+}
+
+.pedidos {
+    margin-top: 20px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.pedidos h3 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+#listaPedidosEnCurso div {
+    margin-bottom: 5px;
+}
+
+#pedidosCompletados {
+    font-weight: bold;
+    color: black; /* Letra negra para "Pedidos Completados" */
+}
